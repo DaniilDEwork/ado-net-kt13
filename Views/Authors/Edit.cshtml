@@ -1,0 +1,14 @@
+@model AuthorForm
+@{
+    ViewData["Title"] = "Изменение автора";
+}
+<h1>Изменение автора</h1>
+<p>ID автора: @Model.AuthorId</p>
+<form asp-action="Edit" asp-route-id="@Model.AuthorId" method="post" novalidate>
+    <div asp-validation-summary="All"></div>
+    <partial name="_AuthorFields" model="Model" />
+    <div class="actions">
+        <button type="submit">Сохранить изменения</button>
+        <a class="button" asp-action="Details" asp-route-id="@Model.AuthorId">Отмена</a>
+    </div>
+</form>

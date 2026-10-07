@@ -1,0 +1,17 @@
+@model Author
+@{
+    ViewData["Title"] = "Удаление автора";
+}
+<h1>Удаление автора</h1>
+<p class="error">Автор и все его книги будут удалены</p>
+<dl class="details">
+    <dt>ID автора</dt><dd>@Model.AuthorId</dd>
+    <dt>Имя</dt><dd>@Model.Name</dd>
+</dl>
+<partial name="_AuthorBooks" model="Model" />
+<form asp-action="DeleteConfirmed" asp-route-id="@Model.AuthorId" method="post">
+    <div class="actions">
+        <button class="danger" type="submit">Подтвердить удаление</button>
+        <a class="button" asp-action="Index">Отмена</a>
+    </div>
+</form>

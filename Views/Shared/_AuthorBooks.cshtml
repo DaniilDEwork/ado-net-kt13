@@ -1,0 +1,23 @@
+@model Author
+<h2>Книги автора</h2>
+@if (Model.Books.Count == 0)
+{
+    <p>У автора пока нет книг</p>
+}
+else
+{
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>ID книги</th><th>Название</th><th>Действие</th></tr></thead>
+            <tbody>
+            @foreach (var book in Model.Books.OrderBy(book => book.BookId))
+            {
+                <tr>
+                    <td>@book.BookId</td><td>@book.Title</td>
+                    <td><a asp-controller="Books" asp-action="Details" asp-route-id="@book.BookId">Просмотр</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

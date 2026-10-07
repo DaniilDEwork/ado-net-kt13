@@ -1,0 +1,16 @@
+@model Book
+@{
+    ViewData["Title"] = "Книга";
+}
+<h1>Книга</h1>
+<dl class="details">
+    <dt>ID книги</dt><dd>@Model.BookId</dd>
+    <dt>Название</dt><dd>@Model.Title</dd>
+    <dt>ID автора</dt><dd>@Model.AuthorId</dd>
+    <dt>Автор</dt><dd><a asp-controller="Authors" asp-action="Details" asp-route-id="@Model.AuthorId">@Model.Author.Name</a></dd>
+</dl>
+<div class="actions">
+    <a class="button" asp-action="Edit" asp-route-id="@Model.BookId">Изменить книгу</a>
+    <a class="button danger" asp-action="Delete" asp-route-id="@Model.BookId">Удалить</a>
+    <a class="button" asp-action="Index">К списку</a>
+</div>

@@ -1,0 +1,21 @@
+@model BookForm
+@{
+    ViewData["Title"] = "Добавление книги";
+}
+<h1>Добавление книги</h1>
+@if (Model.Authors.Count == 0)
+{
+    <p>Для добавления книги сначала нужен автор</p>
+    <a class="button" asp-controller="Authors" asp-action="Create">Добавить автора</a>
+}
+else
+{
+    <form asp-action="Create" method="post" novalidate>
+        <div asp-validation-summary="All"></div>
+        <partial name="_BookFields" model="Model" />
+        <div class="actions">
+            <button type="submit">Добавить книгу</button>
+            <a class="button" asp-action="Index">Отмена</a>
+        </div>
+    </form>
+}
